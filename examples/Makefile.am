@@ -21,7 +21,8 @@ bin_PROGRAMS = vmi-process-list \
 noinst_PROGRAMS = shm-snapshot-process-list \
                   map-symbol \
                   map-gva \
-                  event-example \
+                  map-gpa \
+				  event-example \
                   msr-event-example \
                   singlestep-event-example \
                   interrupt-event-example \
@@ -37,6 +38,7 @@ vmi_win_guid_SOURCES = win-guid.c win-guid.h
 shm_snapshot_process_list_SOURCES = shm-snapshot-process-list.c
 map_symbol_SOURCES = map-symbol.c
 map_gva_SOURCES = map-gva.c
+map_gpa_SOURCES = map-gpa.c
 event_example_SOURCES = event-example.c
 msr_event_example_SOURCES = msr-event-example.c
 singlestep_event_example_SOURCES = singlestep-event-example.c
