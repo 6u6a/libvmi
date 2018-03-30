@@ -1,0 +1,9 @@
+INSTALL steps:
+	./autogen.sh
+	./configure [--disable-xen] [...]
+	make
+	make install
+
+REMOVE steps:
+	make clean
+	make distclean
