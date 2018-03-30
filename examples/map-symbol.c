@@ -38,12 +38,16 @@ main(
     int argc,
     char **argv)
 {
-    if ( argc != 3 )
+    if ( argc != 4 )
         return 1;
 
     vmi_instance_t vmi;
     unsigned char *memory = malloc(PAGE_SIZE);
-
+	size_t len = atoi(argv[3]);
+	if(len > PAGE_SIZE){
+		printf("len is bigger than %d\n", PAGE_SIZE);
+		return -1;
+	}
     /* this is the VM or file that we are looking at */
     char *name = argv[1];
 
@@ -59,11 +63,11 @@ main(
     }
 
     /* get memory starting at symbol for the next PAGE_SIZE bytes */
-    if (VMI_FAILURE == vmi_read_ksym(vmi, symbol, PAGE_SIZE, memory, NULL)) {
+    if (VMI_FAILURE == vmi_read_ksym(vmi, symbol, len, memory, NULL)) {
         printf("failed to get symbol's memory.\n");
         goto error_exit;
     }
-    vmi_print_hex(memory, PAGE_SIZE);
+    vmi_print_hex(memory, len);
 
 error_exit:
     if (memory)
